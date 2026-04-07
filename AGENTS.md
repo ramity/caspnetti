@@ -14,6 +14,10 @@ This agent is responsible for:
 
 ## 2. Project Architecture Overview
 
+### Purpose
+
+* This project is intended to serve as a boilerplate for .NET 10 + Vue 3 applications.
+
 ### Overview
 
 * This is a Docker-based development environment
@@ -30,7 +34,10 @@ caspnetti_vue_development - Vue 3 frontend
 
 ### Backend (ASP.NET)
 
-The backend is a .NET 10 web application that uses Entity Framework Core for data access and MariaDB for the database.
+Host file path: `src/backend` (relative to project root)
+Container caspnetti_aspnet_development file path: `/caspnetti` (absolute path)
+
+The backend is a .NET 10 web application that uses Entity Framework Core for data access and MariaDB for the database. Entity framework is at the core of what makes this setup so powerful, with code first entity definitions and migrations, generating SQL is a breeze. The backend is split into four projects:
 
 Caspnetti.API
 - Assets/
