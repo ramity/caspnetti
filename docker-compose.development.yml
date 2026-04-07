@@ -52,7 +52,7 @@ services:
       - caspnetti_aspnet_development
     image: caspnetti_nginx_development
     ports:
-      - 443:443
+      - 443
     volumes:
       - ./docker/development/nginx/logs:/var/log/nginx
     networks:

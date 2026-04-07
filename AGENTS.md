@@ -20,6 +20,14 @@ This agent is responsible for:
 * All code is run inside Docker containers
 * Use the provided scripts to build and run the application
 
+### Containers
+
+caspnetti_adminer_development - Human-friendly MariaDB GUI
+caspnetti_aspnet_development - ASP.NET 10 backend
+caspnetti_mariadb_development - MariaDB 11.8 database
+caspnetti_nginx_development - Nginx reverse proxy
+caspnetti_vue_development - Vue 3 frontend
+
 ### Backend (ASP.NET)
 
 The backend is a .NET 10 web application that uses Entity Framework Core for data access and MariaDB for the database.
@@ -29,6 +37,7 @@ Caspnetti.API
 - Controllers/
 - DTO/
 - Program.cs
+
 Caspnetti.DAL
 - Entity/
 - Migrations/
@@ -37,8 +46,10 @@ Caspnetti.DAL
 - IEntity.cs
 - IRepository.cs
 - Repository.cs
+
 Caspnetti.Service
 - UserService.cs
+
 Caspnetti.Test
 - UnitTest1.cs
 
