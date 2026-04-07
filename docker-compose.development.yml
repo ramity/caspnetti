@@ -47,7 +47,7 @@ services:
     container_name: caspnetti_nginx_development
     build:
       context: ./
-      dockerfile: docker/development/nginx/Dockerfile
+      dockerfile: ./docker/development/nginx/Dockerfile
     depends_on:
       - caspnetti_aspnet_development
     image: caspnetti_nginx_development

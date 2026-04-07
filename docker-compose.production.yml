@@ -45,7 +45,7 @@ services:
     container_name: caspnetti_nginx_production
     build:
       context: ./
-      dockerfile: docker/production/nginx/Dockerfile
+      dockerfile: ./docker/production/nginx/Dockerfile
     depends_on:
       - caspnetti_aspnet_production
     image: caspnetti_nginx_production
