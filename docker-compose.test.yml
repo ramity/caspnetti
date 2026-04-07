@@ -6,7 +6,7 @@ services:
       dockerfile: ./docker/test/adminer/Dockerfile
     container_name: caspnetti_adminer_test
     depends_on:
-      - caspnetti_mssql_test
+      - caspnetti_mariadb_test
     env_file:
       - ./docker/test/adminer/.env.local
     image: caspnetti_adminer_test
@@ -21,7 +21,7 @@ services:
       dockerfile: ./docker/test/aspnet/Dockerfile
     container_name: caspnetti_aspnet_test
     depends_on:
-      - caspnetti_mssql_test
+      - caspnetti_mariadb_test
     env_file:
       - ./docker/test/aspnet/.env.local
     image: caspnetti_aspnet_test
@@ -30,16 +30,16 @@ services:
     networks:
       - caspnetti_test
 
-  caspnetti_mssql_test:
+  caspnetti_mariadb_test:
     build:
       context: ./
-      dockerfile: ./docker/test/mssql/Dockerfile
-    container_name: caspnetti_mssql_test
+      dockerfile: ./docker/test/mariadb/Dockerfile
+    container_name: caspnetti_mariadb_test
     env_file:
-      - ./docker/test/mssql/.env.local
-    image: caspnetti_mssql_test
+      - ./docker/test/mariadb/.env.local
+    image: caspnetti_mariadb_test
     volumes:
-      - ./docker/test/mssql/data:/var/opt/mssql/data
+      - ./docker/test/mariadb/data:/var/lib/mysql
     networks:
       - caspnetti_test
 

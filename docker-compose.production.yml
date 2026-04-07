@@ -6,7 +6,7 @@ services:
       dockerfile: ./docker/production/adminer/Dockerfile
     container_name: caspnetti_adminer_production
     depends_on:
-      - caspnetti_mssql_production
+      - caspnetti_mariadb_production
     env_file:
       - ./docker/production/adminer/.env.local
     image: caspnetti_adminer_production
@@ -21,23 +21,23 @@ services:
       dockerfile: ./docker/production/aspnet/Dockerfile
     container_name: caspnetti_aspnet_production
     depends_on:
-      - caspnetti_mssql_production
+      - caspnetti_mariadb_production
     env_file:
       - ./docker/production/aspnet/.env.local
     image: caspnetti_aspnet_production
     networks:
       - caspnetti_production
 
-  caspnetti_mssql_production:
+  caspnetti_mariadb_production:
     build:
       context: ./
-      dockerfile: ./docker/production/mssql/Dockerfile
-    container_name: caspnetti_mssql_production
+      dockerfile: ./docker/production/mariadb/Dockerfile
+    container_name: caspnetti_mariadb_production
     env_file:
-      - ./docker/production/mssql/.env.local
-    image: caspnetti_mssql_production
+      - ./docker/production/mariadb/.env.local
+    image: caspnetti_mariadb_production
     volumes:
-      - ./docker/production/mssql/data:/var/opt/mssql/data
+      - ./docker/production/mariadb/data:/var/lib/mysql
     networks:
       - caspnetti_production
 
