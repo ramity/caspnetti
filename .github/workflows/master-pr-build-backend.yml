@@ -10,6 +10,21 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
-      - name: Run build script
+      - name: Run the copy env script
+        run: ./scripts/development/copy_env.sh
+        shell: bash
+      - name: Docker compose build
+        run: ./scripts/development/docker_build.sh
+        shell: bash
+      - name: Docker compose up
+        run: ./scripts/development/docker_up.sh
+        shell: bash
+      - name: ASP.NET build
         run: ./scripts/development/aspnet_build.sh
         shell: bash
+      - name: Docker compose down
+        run: ./scripts/development/docker_down.sh
+        shell: bash
+      # - name: Run the nuke env script
+      #   run: ./scripts/development/nuke_env.sh
+      #   shell: bash
