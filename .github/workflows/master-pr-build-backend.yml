@@ -1,0 +1,15 @@
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+    branches:
+      - master
+jobs:
+  build:
+    name: build
+    runs-on: self-hosted
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - name: Run build script
+        run: ./scripts/development/aspnet_build.sh
+        shell: bash
