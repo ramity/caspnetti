@@ -1,3 +1,6 @@
+docker/**/agent/data/*
+docker/**/agent-ui/data/*
+docker/**/mariadb/data/*
 docker/**/mssql/data/*
 bin/
 obj/

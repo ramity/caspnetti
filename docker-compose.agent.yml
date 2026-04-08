@@ -1,0 +1,46 @@
+services:
+
+  caspnetti_agent_development:
+    build:
+      context: ./docker/development/agent
+      dockerfile: Dockerfile
+    container_name: caspnetti_agent_development
+    image: caspnetti_agent_development
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./docker/development/agent/data:/root/.ollama
+      - ./:/caspnetti
+    networks:
+      - caspnetti_development
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              count: 1
+
+  caspnetti_agent_ui_development:
+    build:
+      context: ./docker/development/agent-ui
+      dockerfile: Dockerfile
+    container_name: caspnetti_agent_ui_development
+    depends_on:
+      - caspnetti_agent_development
+    image: caspnetti_agent_ui_development
+    volumes:
+      - ./docker/development/agent-ui/data:/app/backend/data
+    networks:
+      - caspnetti_development
+    ports:
+      - "8080:8080"
+    environment:
+      - WEBUI_AUTH=False
+      - OLLAMA_BASE_URL=http://caspnetti_agent_development:11434
+      - USE_CUDA_DOCKER=true
+
+networks:
+
+  caspnetti_development:
+    external: true
+    name: caspnetti_development
