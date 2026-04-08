@@ -32,7 +32,7 @@ caspnetti_mariadb_development - MariaDB 11.8 database
 caspnetti_nginx_development - Nginx reverse proxy
 caspnetti_vue_development - Vue 3 frontend
 
-Your efforts will be focused on the development containers. There are production containers and scripts as well, easily identifiable by the `_production` suffix. There may be a time when you're asked to work on the production containers, but that will be rare. When not specified, it's safe to assume you're working on the development containers.
+Your efforts will be focused on the development containers. There are production containers and scripts as well, easily identifiable with the `_production` suffix. There may be a time when you're asked to work on the production containers, but that will be rare. When not specified, it's safe to assume you're working on the development containers.
 
 ### Backend (ASP.NET)
 
@@ -80,17 +80,10 @@ Repositories commonly extend `Repository<Entity>`. This base class provides typi
   - Delete
   - Save
 
+### Tooling & Automation
+- **Entity Scaffolding**: Use `./scripts/development/scaffold_entity.sh <EntityName>` to rapidly bootstrap new domain models, repositories, services, and controllers. This is the preferred method for implementing new CRUD entities to ensure architectural compliance.
+
 Because of the way the backend is built, entities are the core of the backend. It's very easy to be able to quickly create a new entity, create a repository for that entity, create a controller for accessing that entity, and boom, you have a new CRUD API with complete functionality for that entity. You can also easily add new functionality to an existing entity by adding a new method to the specific repository, a new method to the service, and a new endpoint/method to the controller.
-
-Here are some things to keep in mind:
-
-- Controllers do not contain business logic
-- Services capture business logic
-- Controllers never directly access a repository
-- Services call repository methods to get/update data
-- Services and repositories are registered via dependency injection in `Program.cs`
-
-High level request to response flow: Controller handles request, calls service, calls a repository, which populates data relating to an entity that is mapped to a table in the database, data bubbles back up the chain, and the controller returns the response.
 
 ### Frontend (Vue + Vite)
 
@@ -103,7 +96,7 @@ Container caspnetti_vue_development file path: `/caspnetti` (absolute path)
 
 ## 3. Agent Workflow
 
-Below is a suggested workflow for implementing a given unit of work. The user may specify a different workflow, and this may be overkill for simple tasks, but it's a good starting point.
+Below is a suggested workflow for implementing a given unit of work. The user may specify a different workflow, but this is a good starting point.
 
 Prepare subagents for each of the following steps:
 
@@ -120,7 +113,7 @@ Prepare subagents for each of the following steps:
 
 The user is there for you. <3 If you like building software that makes two of us. Ask the user if you need clarification, but try to do it up front. The user can be forgetful and may omit necessary context or details they may consider unspoken. It's better to ask than to assume. That said, try to be efficient and not waste the user's time with unnecessary questions.
 
-Before implementing the task, you should use your tools to validate the task is valid. It's too easy to validate than to fix a mistake assuming the user is correct. You should look for these files if you need context or a pattern to follow for new entities.
+Before implementing the task, you should use your tools to validate the task is valid. It's too easy to validate than to fix a mistake assuming the user is correct. You should look for these files if you need context or a pattern to be followed for new entities.
 
 ### Step 1: Understand Task
 
@@ -140,8 +133,8 @@ Many times, user requests will be sourced from github issues. As such, the user 
 Additionally, you should always be considering the entity first mental model of the codebase. Entity is the core, wrapped by repository, accessible via a service, made invokable by the controller.
 
 ### Step 2: Implement Backend
-
-Is this a new feature or an existing feature? If it's an existing feature, you should look for the existing entity, repository, and service and add the new functionality in the correct location. If it's a new feature, you should create a new entity, repository, service, and controller as needed.
+- **Check for Automation**: Before manually creating files, check `scripts/development/` for scaffolding tools (e.g., `scaffold_entity.s`). If the task involves a new entity, use these scripts first.
+- **New Feature or Existing?**: Is this a new feature or an existing feature? If it's an existing feature, you should look for the existing entity, repository, and service and add the new functionality in the correct location. If it's a new feature, you can use the scaffolding script or create a new entity, repository, service, and controller as needed.
 
 ### Step 3: Write Backend Tests
 
