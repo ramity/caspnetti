@@ -8,6 +8,9 @@ jobs:
     name: build
     runs-on: self-hosted
     steps:
+      - name: Post-run cleanup permissions
+        run: sudo chown -R $(id -u):$(id -g) .
+        shell: bash
       - name: Checkout the code
         uses: actions/checkout@v4
       - name: Run the copy env script
