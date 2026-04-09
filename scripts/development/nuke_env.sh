@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker compose -f docker/development/docker-compose.yml down --rmi --volumes
+docker compose -f docker/development/docker-compose.yml down --rmi local --volumes
 
 # Remove .env.local files for all services:
 rm docker/development/adminer/.env.local
