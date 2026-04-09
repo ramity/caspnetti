@@ -1,0 +1,20 @@
+{
+    "permissions": {
+        "allow": [
+            "Bash(/caspnetti/scripts/development/aspnet_build.sh)",
+            "Bash(/caspnetti/scripts/development/docker_build.sh)",
+            "Bash(/caspnetti/scripts/development/docker_down.sh)",
+            "Bash(/caspnetti/scripts/development/docker_up.sh)",
+            "Bash(/caspnetti/scripts/development/scaffold_entity.sh *)",
+            "Bash(/caspnetti/scripts/development/vue_build.sh)",
+            "Bash(git *)",
+            "Bash(ls *)",
+            "Bash(cat *)",
+            "Bash(sed *)",
+            "Bash(mkdir *)",
+            "Bash(grep *)",
+            "Bash(docker exec -t caspnetti_aspnet_development sh -c *)",
+            "Bash(docker exec -t caspnetti_vue_development sh -c *)"
+        ]
+    }
+}

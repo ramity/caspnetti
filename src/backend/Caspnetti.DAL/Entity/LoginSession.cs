@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Caspnetti.DAL.Entity;
 
-[Table("LoginSessions")]
+[Table("LoginSession")]
 public class LoginSession: IEntity
 {
     public LoginSession()

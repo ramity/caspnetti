@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Caspnetti.DAL.Entity;
 
-[Table("Users")]
+[Table("User")]
 public class User: IEntity
 {
     public User()
