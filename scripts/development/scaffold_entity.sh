@@ -11,7 +11,7 @@ fi
 
 # Prepare class name (capitalize first letter)
 CLASS_NAME="$(echo $ENTITY_NAME | sed 's/./\U&/')"
-TABLE_NAME="${CLASS_NAME}s"
+TABLE_NAME="${CLASS_NAME}"
 
 # Paths
 PROJECT_ROOT="/caspnetti"
