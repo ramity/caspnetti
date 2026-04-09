@@ -8,6 +8,10 @@ jobs:
     name: build
     runs-on: self-hosted
     steps:
+      - name: Cleanup workspace
+        run: |
+          rm -rf ./* || true
+          rm -rf ./.??* || true
       - name: Checkout the code
         uses: actions/checkout@v4
       - name: Run the copy env script
