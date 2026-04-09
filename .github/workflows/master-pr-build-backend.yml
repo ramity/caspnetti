@@ -8,9 +8,6 @@ jobs:
     name: build
     runs-on: self-hosted
     steps:
-      - name: Post-run cleanup permissions
-        run: chown -R $(id -u):$(id -g) .
-        shell: bash
       - name: Checkout the code
         uses: actions/checkout@v4
       - name: Run the copy env script
@@ -28,6 +25,7 @@ jobs:
       - name: Docker compose down
         run: ./scripts/development/docker_down.sh
         shell: bash
-      # - name: Run the nuke env script
-      #   run: ./scripts/development/nuke_env.sh
-      #   shell: bash
+      - name: Run the nuke env script
+        if: always()
+        run: ./scripts/development/nuke_env.sh
+        shell: bash
