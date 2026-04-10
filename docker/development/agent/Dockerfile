@@ -3,7 +3,7 @@ RUN apt update
 RUN apt upgrade -y
 RUN apt install curl git -y
 RUN curl -fsSL https://claude.ai/install.sh | bash
-ENV PATH="$HOME/.local/bin:$PATH"
+ENV PATH="/root/.local/bin:${PATH}"
 
 # Add Docker's official GPG key:
 RUN apt update
