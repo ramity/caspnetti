@@ -122,10 +122,7 @@ public class UserService
     public string HashPassword(byte[] salt, string password)
     {
         // Generate one-way password hash using salt
-        using Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, salt, 100000, HashAlgorithmName.SHA256);
-        byte[] hash = pbkdf2.GetBytes(32);
-
-        // Combine and return passwordHash (salt + hash)
+        byte[] hash = Rfc2898DeriveBytes.Pbkdf2(password, salt, 100000, HashAlgorithmName.SHA256, 32);
         byte[] result = new byte[salt.Length + hash.Length];
         Buffer.BlockCopy(salt, 0, result, 0, salt.Length);
         Buffer.BlockCopy(hash, 0, result, salt.Length, hash.Length);
@@ -143,7 +140,7 @@ public class UserService
         string generatedPasswordHash = this.HashPassword(salt, password);
 
         // PasswordHashes do not match case
-        if (generatedPasswordHash != passwordHash)
+        if (!System.String.Equals(generatedPasswordHash, passwordHash, System.StringComparison.Ordinal))
         {
             return false;
         }
