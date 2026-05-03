@@ -10,10 +10,10 @@ public class ApplicationDbContext : DbContext
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options){}
 
-    public DbSet<FilePointer> FilePointers { get; set; } = null!;
-    public DbSet<LoginAttempt> LoginAttempts { get; set; } = null!;
-    public DbSet<LoginSession> LoginSessions { get; set; } = null!;
-    public DbSet<User> Users { get; set; } = null!;
+    public DbSet<FilePointer> FilePointer { get; set; } = null!;
+    public DbSet<LoginAttempt> LoginAttempt { get; set; } = null!;
+    public DbSet<LoginSession> LoginSession { get; set; } = null!;
+    public DbSet<User> User { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

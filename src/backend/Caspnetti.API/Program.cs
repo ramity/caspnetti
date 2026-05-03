@@ -7,7 +7,7 @@ using System.IO;
 var builder = WebApplication.CreateBuilder(args);
 
 // MariaDB initialization
-string? username = Environment.GetEnvironmentVariable("MARIADB_USERNAME");
+string? username = Environment.GetEnvironmentVariable("MARIADB_USER");
 string? password = Environment.GetEnvironmentVariable("MARIADB_PASSWORD");
 string? server = Environment.GetEnvironmentVariable("MARIADB_SERVER");
 string? database = Environment.GetEnvironmentVariable("MARIADB_DATABASE");
@@ -54,7 +54,7 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.MapOpenApi("/api/swagger.json");
 }
 
 app.UseHttpsRedirection();

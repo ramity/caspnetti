@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Caspnetti.DAL.Entity;
 
-[Table("FilePointers")]
+[Table("FilePointer")]
 public class FilePointer: IEntity
 {
     public int Id { get; set; }

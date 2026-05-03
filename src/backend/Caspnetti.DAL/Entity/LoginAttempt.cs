@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Caspnetti.DAL.Entity;
 
-[Table("LoginAttempts")]
+[Table("LoginAttempt")]
 public class LoginAttempt: IEntity
 {
     // Main

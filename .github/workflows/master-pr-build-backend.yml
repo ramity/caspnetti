@@ -4,6 +4,17 @@ on:
     branches:
       - master
 jobs:
+  pre_clean:
+    name: pre_clean
+    runs-on: self-hosted
+    container:
+      image: alpine
+    steps:
+      - name: Cleanup workspace
+        if: always()
+        run: |
+          rm -rf ./* || true
+          rm -rf ./.??* || true
   build:
     name: build
     runs-on: self-hosted
@@ -25,6 +36,14 @@ jobs:
       - name: Docker compose down
         run: ./scripts/development/docker_down.sh
         shell: bash
-      # - name: Run the nuke env script
-      #   run: ./scripts/development/nuke_env.sh
-      #   shell: bash
+  post_clean:
+    name: post_clean
+    runs-on: self-hosted
+    container:
+      image: alpine
+    steps:
+      - name: Cleanup workspace
+        if: always()
+        run: |
+          rm -rf ./* || true
+          rm -rf ./.??* || true
