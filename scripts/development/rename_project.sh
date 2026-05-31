@@ -6,7 +6,7 @@ if [ -z "$1" ]; then
 fi
 
 export NEW_VAL="$1"
-export OLD_VAL="wrybin"
+export OLD_VAL="Caspnetti"
 
 echo "Step 1: Renaming Directories and Files..."
 
@@ -18,7 +18,7 @@ find . -path "./.git" -prune -o -iname "*${OLD_VAL}*" -print | awk '{ print leng
     base=$(basename "$path")
     
     # We use Perl with | as a delimiter to avoid path clash
-    # The logic correctly catches Wrybin.API -> Wrybin.API
+    # The logic correctly catches Caspnetti.API -> Caspnetti.API
     new_base=$(echo "$base" | perl -pe '
         s|('"$OLD_VAL"')|
             $m = $1; 
@@ -41,11 +41,11 @@ echo "Step 2: Updating File Contents..."
 # Target files only, skipping .git
 find . -path "./.git" -prune -o -type f -exec grep -il "$OLD_VAL" {} + | while read -r file; do
     # Perform case-aware substitution
-    # Lower: wrybin -> wrybin
+    # Lower: wry -> wry
     sed -i "s/${OLD_VAL}/${NEW_VAL,,}/g" "$file"
-    # Title: Wrybin -> Wrybin
+    # Title: Wry -> Wry
     sed -i "s/${OLD_VAL^}/${NEW_VAL^}/g" "$file"
-    # Upper: WRYBIN -> WRYBIN
+    # Upper: WRY -> WRY
     sed -i "s/${OLD_VAL^^}/${NEW_VAL^^}/g" "$file"
 done
 
