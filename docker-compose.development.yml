@@ -27,6 +27,22 @@ services:
     image: caspnetti_aspnet_development
     volumes:
       - ./src/backend:/caspnetti
+      - ./src/package/Wryco.EFirst:/Wryco.EFirst
+    networks:
+      - caspnetti_development
+
+  caspnetti_package_development:
+    build:
+      context: ./
+      dockerfile: ./docker/development/aspnet/Dockerfile
+    container_name: caspnetti_package_development
+    depends_on:
+      - caspnetti_mariadb_development
+    env_file:
+      - ./docker/development/aspnet/.env.local
+    image: caspnetti_package_development
+    volumes:
+      - ./src/package:/caspnetti
     networks:
       - caspnetti_development
 

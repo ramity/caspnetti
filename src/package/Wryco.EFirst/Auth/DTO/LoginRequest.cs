@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Caspnetti.API.DTO;
+namespace Wryco.EFirst.Auth.DTO;
 
 /// <summary>
 /// Represents the JSON payload for a login request.

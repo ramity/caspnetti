@@ -1,4 +1,4 @@
-namespace Caspnetti.API.DTO;
+namespace Wryco.EFirst.Auth.DTO;
 
 public class ChunkRequest
 {

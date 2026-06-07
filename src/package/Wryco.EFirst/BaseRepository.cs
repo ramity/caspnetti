@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Caspnetti.DAL;
+namespace Wryco.EFirst;
 
 // Create custom repo classes extending this one to modify or extend functionality
 
-public class Repository<T> : IRepository<T> where T : class
+public class BaseRepository<T, TContext> : BaseIRepository<T> where T : class where TContext: DbContext
 {
-    private readonly ApplicationDbContext _context;
+    private readonly TContext _context;
     private readonly DbSet<T> _dbSet;
 
-    public Repository(ApplicationDbContext context)
+    public BaseRepository(TContext context)
     {
         _context = context;
         _dbSet = _context.Set<T>();
