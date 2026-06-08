@@ -1,5 +1,6 @@
+name: Nuget Publish
 on:
-  workflow_dispatch
+  workflow_dispatch:
 jobs:
   pre_clean:
     name: pre_clean
@@ -30,7 +31,7 @@ jobs:
         run: ./scripts/development/docker_up.sh
         shell: bash
       - name: ASP.NET build
-        run: ./scripts/development/aspnet_build.sh
+        run: docker exec -it caspnetti_package_development bash 
         shell: bash
       # Get a short-lived NuGet API key
       - name: NuGet login (OIDC → temp API key)
