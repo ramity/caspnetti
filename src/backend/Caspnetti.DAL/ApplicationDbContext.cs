@@ -25,7 +25,7 @@ public class ApplicationDbContext : BaseDbContext
         //         .Build();
 
         //     var connectionString = config.GetConnectionString("MariaDBConnection");
-        //     optionsBuilder.UseSqlServer(connectionString);
+        //     optionsBuilder.UseMySql(connectionString, new MySqlServerVersion(new Version(10, 11, 15)));
         // }
     }
 }
