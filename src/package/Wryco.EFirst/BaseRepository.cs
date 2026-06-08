@@ -7,12 +7,12 @@ namespace Wryco.EFirst;
 
 // Create custom repo classes extending this one to modify or extend functionality
 
-public class BaseRepository<T, TContext> : BaseIRepository<T> where T : class where TContext: DbContext
+public class BaseRepository<T> : BaseIRepository<T> where T : class
 {
-    private readonly TContext _context;
+    private readonly BaseDbContext _context;
     private readonly DbSet<T> _dbSet;
 
-    public BaseRepository(TContext context)
+    public BaseRepository(BaseDbContext context)
     {
         _context = context;
         _dbSet = _context.Set<T>();

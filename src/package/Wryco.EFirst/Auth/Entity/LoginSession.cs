@@ -4,7 +4,7 @@ using Wryco.EFirst;
 namespace Wryco.EFirst.Auth.Entity;
 
 [Table("LoginSession")]
-public class LoginSession: IEntity
+public class LoginSession: BaseIEntity
 {
     public LoginSession()
     {

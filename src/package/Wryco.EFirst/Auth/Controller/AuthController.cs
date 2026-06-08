@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Wryco.EFirst.Auth.DTO;
 using Wryco.EFirst.Auth.Entity;
 using Wryco.EFirst.Auth.Service;
+using Microsoft.AspNetCore.Http;
 
 namespace Wryco.EFirst.Auth.Controller;
 

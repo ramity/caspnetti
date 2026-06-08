@@ -21,12 +21,13 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="10.0.2" />
-    <PackageReference Include="Wryco.EFirst" Version="1.0.0" />
+    <!-- <PackageReference Include="Wryco.EFirst" Version="1.0.0" /> -->
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Caspnetti.Service\Caspnetti.Service.csproj" />
     <ProjectReference Include="..\Caspnetti.DAL\Caspnetti.DAL.csproj" />
+    <ProjectReference Include="/Wryco.EFirst/Wryco.EFirst.csproj" />
   </ItemGroup>
 
 </Project>

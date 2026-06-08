@@ -1,6 +1,10 @@
+using Wryco.EFirst;
+using Wryco.EFirst.Extensions;
+using Wryco.EFirst.Auth.Entity;
+using Wryco.EFirst.Auth.Repository;
+using Wryco.EFirst.Auth.Service;
 using Caspnetti.DAL;
 using Caspnetti.DAL.Repository;
-using Caspnetti.Service;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 
@@ -29,14 +33,9 @@ if (redisConnection == null)
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(MariaDBConnection, new MySqlServerVersion(new Version(10, 11, 15))));
-// Repositories
-builder.Services.AddScoped<UserRepository>();
-builder.Services.AddScoped<LoginSessionRepository>();
-builder.Services.AddScoped<LoginAttemptRepository>();
-builder.Services.AddScoped<FilePointerRepository>();
-// Services
-builder.Services.AddScoped<UserService>();
+builder.Services.AddSharedInfrastructure<ApplicationDbContext>(MariaDBConnection);
+builder.Services.AddScoped<DeviceRepository>();
+
 // Session
 builder.Services.AddStackExchangeRedisCache(options =>
 {

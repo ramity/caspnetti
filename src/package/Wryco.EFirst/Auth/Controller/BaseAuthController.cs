@@ -3,6 +3,8 @@ using Wryco.EFirst.Auth.Repository;
 using Wryco.EFirst.Auth.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace Caspnetti.API.Controllers;
 

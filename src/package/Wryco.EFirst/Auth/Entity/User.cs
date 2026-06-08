@@ -5,7 +5,7 @@ using Wryco.EFirst.Auth.Entity;
 namespace Wryco.EFirst.Auth.Entity;
 
 [Table("User")]
-public class User: IEntity
+public class User: BaseIEntity
 {
     public User()
     {
