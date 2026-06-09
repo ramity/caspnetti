@@ -14,10 +14,12 @@ jobs:
           rm -rf ./* || true
           rm -rf ./.??* || true
   build:
-    permissions:
-      id-token: write  # enable GitHub OIDC token issuance for this job
     name: build
     runs-on: self-hosted
+    permissions:
+      id-token: write  # enable GitHub OIDC token issuance for this job
+    environment: production
+    needs: pre_clean
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
@@ -31,7 +33,7 @@ jobs:
         run: ./scripts/development/docker_up.sh
         shell: bash
       - name: ASP.NET build
-        run: docker exec -it caspnetti_package_development bash 
+        run: docker exec caspnetti_package_development sh -c "cd Wryco.EFirst && dotnet pack"
         shell: bash
       # Get a short-lived NuGet API key
       - name: NuGet login (OIDC → temp API key)
@@ -40,7 +42,7 @@ jobs:
         with:
           user: ${{ secrets.NUGET_USER }}
       - name: NuGet push
-        run: dotnet nuget push artifacts/my-sdk.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+        run: docker exec caspnetti_package_development sh -c "cd Wryco.EFirst && dotnet nuget push bin/Release/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json"
       - name: Docker compose down
         run: ./scripts/development/docker_down.sh
         shell: bash
@@ -49,6 +51,7 @@ jobs:
     runs-on: self-hosted
     container:
       image: alpine
+    needs: build
     steps:
       - name: Cleanup workspace
         if: always()
