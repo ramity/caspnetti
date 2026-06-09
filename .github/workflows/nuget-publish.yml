@@ -31,7 +31,7 @@ jobs:
         run: ./scripts/development/docker_up.sh
         shell: bash
       - name: ASP.NET build
-        run: docker exec -it caspnetti_package_development bash 
+        run: docker exec -it caspnetti_package_development sh -c "cd Wryco.EFirst && dotnet pack"
         shell: bash
       # Get a short-lived NuGet API key
       - name: NuGet login (OIDC → temp API key)
