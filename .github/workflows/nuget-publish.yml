@@ -42,7 +42,7 @@ jobs:
         with:
           user: ${{ secrets.NUGET_USER }}
       - name: NuGet push
-        run: dotnet nuget push bin/Relase/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+        run: docker exec caspnetti_package_development sh -c "cd Wryco.EFirst && dotnet nuget push bin/Relase/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json"
       - name: Docker compose down
         run: ./scripts/development/docker_down.sh
         shell: bash
