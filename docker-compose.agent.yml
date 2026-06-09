@@ -7,12 +7,9 @@ services:
     container_name: caspnetti_agent_development
     image: caspnetti_agent_development
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./docker/development/agent/data:/root/.ollama
+      # - /var/run/docker.sock:/var/run/docker.sock
+      - ./docker/development/agent/data:/root/.cache/huggingface
       - ./:/caspnetti
-    environment:
-      - OLLAMA_DEBUG=true
-      - OLLAMA_KEEP_ALIVE=1h
     networks:
       - caspnetti_development
     deploy:
@@ -22,6 +19,7 @@ services:
             - driver: nvidia
               capabilities: [gpu]
               count: 1
+    command: --model Qwen/Qwen3-0.6B
 
   caspnetti_agent_ui_development:
     build:
@@ -39,7 +37,7 @@ services:
       - "8080:8080"
     environment:
       - WEBUI_AUTH=False
-      - OLLAMA_BASE_URL=http://caspnetti_agent_development:11434
+      - OPENAI_API_BASE_URL=http://caspnetti_agent_development:8000
       - USE_CUDA_DOCKER=true
 
 networks:

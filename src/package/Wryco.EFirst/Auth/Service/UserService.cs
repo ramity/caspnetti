@@ -1,26 +1,23 @@
 using Microsoft.Extensions.Caching.Distributed;
 using System.Security.Cryptography;
 using System.Text.Json;
-using Caspnetti.DAL;
-using Caspnetti.DAL.Entity;
-using Caspnetti.DAL.Repository;
+using Wryco.EFirst.Auth.Entity;
+using Wryco.EFirst.Auth.Repository;
 
-namespace Caspnetti.Service;
+namespace Wryco.EFirst.Auth.Service;
 
 public class UserService
 {
     private readonly LoginSessionRepository _loginSessionRepository;
     private readonly UserRepository _userRepository;
-    private readonly IDistributedCache _cache;
 
     private readonly int _saltSize = 32;
     private readonly int _sessionTokenSize = 32;
 
-    public UserService(LoginSessionRepository loginSessionRepository, UserRepository userRepository, IDistributedCache cache)
+    public UserService(LoginSessionRepository loginSessionRepository, UserRepository userRepository)
     {
         _loginSessionRepository = loginSessionRepository;
         _userRepository = userRepository;
-        _cache = cache;
     }
 
     // Creates a user record with the supplied data and assumes username has already been vetted.

@@ -1,9 +1,11 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using Wryco.EFirst;
+using Wryco.EFirst.Auth.Entity;
 
-namespace Caspnetti.DAL.Entity;
+namespace Wryco.EFirst.Auth.Entity;
 
 [Table("User")]
-public class User: IEntity
+public class User: BaseIEntity
 {
     public User()
     {

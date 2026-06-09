@@ -1,9 +1,10 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using Wryco.EFirst;
 
-namespace Caspnetti.DAL.Entity;
+namespace Wryco.EFirst.Auth.Entity;
 
 [Table("LoginSession")]
-public class LoginSession: IEntity
+public class LoginSession: BaseIEntity
 {
     public LoginSession()
     {

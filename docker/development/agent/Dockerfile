@@ -1,6 +1,12 @@
-FROM ollama/ollama:latest
+FROM vllm/vllm-openai:latest
+
 RUN apt update
 RUN apt upgrade -y
+
+# Add Claude code
+# - Just run our install.sh script, bro.
+# - It's no fucking wonder why slopsquatting exists.
+# - $965B post-money company btw.
 RUN apt install curl git -y
 RUN curl -fsSL https://claude.ai/install.sh | bash
 ENV PATH="/root/.local/bin:${PATH}"
@@ -24,6 +30,3 @@ EOF
 
 RUN apt update
 RUN apt install -y docker-ce-cli
-
-WORKDIR /caspnetti
-ENTRYPOINT cd /root/.ollama && ollama serve

@@ -1,19 +1,18 @@
 using Caspnetti.DAL.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Wryco.EFirst;
+using Wryco.EFirst.Auth.Entity;
 
 namespace Caspnetti.DAL;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : BaseDbContext
 {
-    public ApplicationDbContext(){}
+    // public ApplicationDbContext(){}
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options){}
 
-    public DbSet<FilePointer> FilePointer { get; set; } = null!;
-    public DbSet<LoginAttempt> LoginAttempt { get; set; } = null!;
-    public DbSet<LoginSession> LoginSession { get; set; } = null!;
-    public DbSet<User> User { get; set; } = null!;
+    public DbSet<Device> Device { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -26,7 +25,7 @@ public class ApplicationDbContext : DbContext
         //         .Build();
 
         //     var connectionString = config.GetConnectionString("MariaDBConnection");
-        //     optionsBuilder.UseSqlServer(connectionString);
+        //     optionsBuilder.UseMySql(connectionString, new MySqlServerVersion(new Version(10, 11, 15)));
         // }
     }
 }

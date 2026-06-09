@@ -1,14 +1,13 @@
-using Caspnetti.DAL;
-using Caspnetti.DAL.Repository;
-using Caspnetti.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
-namespace Caspnetti.API.Controllers;
+namespace Wryco.EFirst;
 
-public class BaseController<TRepo, TEntity> : ControllerBase
-where TRepo : IRepository<TEntity>
-where TEntity : class, IEntity
+public class BaseController<TRepo, TEntity, TContext> : ControllerBase
+where TRepo : BaseIRepository<TEntity>
+where TEntity : class, BaseIEntity
+where TContext: DbContext
 {
     protected readonly TRepo _repository;
 

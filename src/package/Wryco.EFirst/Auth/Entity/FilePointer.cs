@@ -1,9 +1,10 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using Wryco.EFirst;
 
-namespace Caspnetti.DAL.Entity;
+namespace Wryco.EFirst.Auth.Entity;
 
 [Table("FilePointer")]
-public class FilePointer: IEntity
+public class FilePointer: BaseIEntity
 {
     public int Id { get; set; }
     public string? Name { get; set; }

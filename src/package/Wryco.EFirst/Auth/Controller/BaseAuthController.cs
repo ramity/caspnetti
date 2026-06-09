@@ -1,14 +1,17 @@
-using Caspnetti.DAL;
-using Caspnetti.DAL.Repository;
-using Caspnetti.Service;
+using Wryco.EFirst;
+using Wryco.EFirst.Auth.Repository;
+using Wryco.EFirst.Auth.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace Caspnetti.API.Controllers;
 
-public class BaseAuthController<TRepo, TEntity> : BaseController<TRepo, TEntity>
-where TRepo : IRepository<TEntity>
-where TEntity : class, IEntity
+public class BaseAuthController<TRepo, TEntity, TContext> : BaseController<TRepo, TEntity, TContext>
+where TRepo : BaseIRepository<TEntity>
+where TEntity : class, BaseIEntity
+where TContext: DbContext
 {
     protected UserService _userService;
 

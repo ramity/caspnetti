@@ -1,9 +1,10 @@
-using Caspnetti.API.DTO;
-using Caspnetti.DAL.Entity;
-using Caspnetti.Service;
 using Microsoft.AspNetCore.Mvc;
+using Wryco.EFirst.Auth.DTO;
+using Wryco.EFirst.Auth.Entity;
+using Wryco.EFirst.Auth.Service;
+using Microsoft.AspNetCore.Http;
 
-namespace Caspnetti.API.Controllers;
+namespace Wryco.EFirst.Auth.Controller;
 
 [ApiController]
 [Route("api/auth/")]
