@@ -12,6 +12,7 @@ services:
       - ./:/caspnetti
     networks:
       - caspnetti_development
+    ipc: "host"
     deploy:
       resources:
         reservations:
@@ -19,7 +20,7 @@ services:
             - driver: nvidia
               capabilities: [gpu]
               count: 1
-    command: --model Qwen/Qwen3-0.6B
+    command: Qwen/Qwen3-0.6B --gpu-memory-utilization 0.8
 
   caspnetti_agent_ui_development:
     build:
