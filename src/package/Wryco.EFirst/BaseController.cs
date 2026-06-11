@@ -4,10 +4,9 @@ using System.Collections.Generic;
 
 namespace Wryco.EFirst;
 
-public class BaseController<TRepo, TEntity, TContext> : ControllerBase
+public class BaseController<TRepo, TEntity> : ControllerBase
 where TRepo : BaseIRepository<TEntity>
 where TEntity : class, BaseIEntity
-where TContext: DbContext
 {
     protected readonly TRepo _repository;
 

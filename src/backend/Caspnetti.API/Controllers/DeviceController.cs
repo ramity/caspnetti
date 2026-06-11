@@ -8,7 +8,7 @@ namespace Caspnetti.API.Controllers;
 
 [ApiController]
 [Route("api/device")]
-public class DeviceController : BaseController<DeviceRepository, Device, ApplicationDbContext>
+public class DeviceController : BaseController<DeviceRepository, Device>
 {
     public DeviceController(DeviceRepository repository) : base(repository) { }
 }
