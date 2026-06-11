@@ -8,10 +8,9 @@ using Microsoft.AspNetCore.Http;
 
 namespace Caspnetti.API.Controllers;
 
-public class BaseAuthController<TRepo, TEntity, TContext> : BaseController<TRepo, TEntity, TContext>
+public class BaseAuthController<TRepo, TEntity> : BaseController<TRepo, TEntity>
 where TRepo : BaseIRepository<TEntity>
 where TEntity : class, BaseIEntity
-where TContext: DbContext
 {
     protected UserService _userService;
 
