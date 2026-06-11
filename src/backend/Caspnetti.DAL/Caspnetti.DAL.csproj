@@ -14,10 +14,11 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.1" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
+    <PackageReference Include="Wryco.EFirst" Version="1.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!-- <ItemGroup>
     <ProjectReference Include="/Wryco.EFirst/Wryco.EFirst.csproj" />
-  </ItemGroup>
+  </ItemGroup> -->
 
 </Project>

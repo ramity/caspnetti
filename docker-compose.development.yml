@@ -27,7 +27,6 @@ services:
     image: caspnetti_aspnet_development
     volumes:
       - ./src/backend:/caspnetti
-      - ./src/package/Wryco.EFirst:/Wryco.EFirst
     networks:
       - caspnetti_development
 
